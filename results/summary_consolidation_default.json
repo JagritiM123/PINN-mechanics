@@ -1,0 +1,10 @@
+{
+ "consolidation": {
+  "problem": "consolidation",
+  "rel_l2": 0.010732020794261093,
+  "max_abs_err": 0.08518440367002156,
+  "mean_abs_err": 0.003767945938909792,
+  "adam_epochs": 10000,
+  "lbfgs_iters": 2000
+ }
+}

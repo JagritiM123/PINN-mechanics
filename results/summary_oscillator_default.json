@@ -1,0 +1,15 @@
+{
+ "oscillator": {
+  "problem": "oscillator_noise5",
+  "noise": 0.05,
+  "c_est": 0.39376006990046936,
+  "k_est": 3.951758033207029,
+  "c_true": 0.4,
+  "k_true": 4.0,
+  "c_rel_err_pct": 1.5599825248826664,
+  "k_rel_err_pct": 1.2060491698242748,
+  "solution_rel_l2": 0.03255368331549301,
+  "adam_epochs": 20000,
+  "lbfgs_iters": 20000
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "heat": {
+  "problem": "heat",
+  "adam_epochs": 5000,
+  "lbfgs_iters": 1000,
+  "fd_center_T": 0.2946796083031553,
+  "soft_rel_l2": 0.009333069771815937,
+  "soft_max_abs_err": 0.01603531045068146,
+  "soft_mean_abs_err": 0.00101538212124489,
+  "soft_max_abs_boundary_T": 0.01603531045068146,
+  "hard_rel_l2": 0.0006198342948848609,
+  "hard_max_abs_err": 0.0002949987999176784,
+  "hard_mean_abs_err": 7.681176721003414e-05,
+  "hard_max_abs_boundary_T": 0.0
+ }
+}
