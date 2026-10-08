@@ -7,7 +7,7 @@ UE24CS352A – Machine Learning · Mini-Project
 | Name | SRN |
 |------|-----|
 | Jagriti Mohan | PES2UG24CS200 |
-| Jaladi Suhas  | PES2UG24CS200 |
+| Jaladi Suhas  | PES2UG24CS201 |
  
 Course: UE24CS352A Machine Learning, PES University · Faculty/TAs have been added as repository collaborators.
  
