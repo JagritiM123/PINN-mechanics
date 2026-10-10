@@ -6,6 +6,12 @@ import torch.nn as nn
 
 torch.set_default_dtype(torch.float64)
 
+# Use the GPU when available (falls back to CPU). Setting the default device makes every tensor,
+# nn.Parameter and nn.Linear created after this point live on that device.
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(torch.cuda.is_available())
+torch.set_default_device(DEVICE)
+
 
 class MLP(nn.Module):
     """Fully connected network with tanh hidden activations and Glorot init."""

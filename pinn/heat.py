@@ -75,7 +75,7 @@ def run(adam_epochs, lbfgs_iters, lr=5e-4, seed=0, out="results", log_every=500,
 
         def predict():
             with torch.no_grad():
-                return T_fn(G).numpy().reshape(XG.shape)
+                return T_fn(G).cpu().numpy().reshape(XG.shape)
 
         def callback():
             return {"test_pde": (residual(xt) ** 2).mean().item(), "rel_l2": rel_l2(predict(), ref)}

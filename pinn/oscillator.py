@@ -28,7 +28,7 @@ def run(adam_epochs, lbfgs_iters=0, lr=5e-4, seed=0, out="results", log_every=50
     c.data = c.data.double(); k.data = k.data.double()
 
     td = torch.linspace(0, T_END, n_data).reshape(-1, 1)   # synthetic observations (paper: 50)
-    ud = torch.tensor(analytic(td.numpy()))
+    ud = torch.tensor(analytic(td.cpu().numpy()))
     ud = ud + noise * ud.std() * torch.randn_like(ud)   # optional measurement noise
     nf = int(100 * n_scale)
     pts = {"tf": torch.rand(nf, 1) * T_END}                # collocation points (paper: 100)
@@ -57,7 +57,7 @@ def run(adam_epochs, lbfgs_iters=0, lr=5e-4, seed=0, out="results", log_every=50
                  pre_step=(lambda: pts.update(tf=torch.rand(nf, 1) * T_END)) if resample else None)
     tg = np.linspace(0, T_END, 600)
     with torch.no_grad():
-        pred = model(torch.tensor(tg).reshape(-1, 1)).numpy().ravel()
+        pred = model(torch.tensor(tg).reshape(-1, 1)).cpu().numpy().ravel()
     true = analytic(tg)
     metrics = {"problem": "oscillator" + tag, "noise": noise, "c_est": c.item(), "k_est": k.item(),
                "c_true": C_TRUE, "k_true": K_TRUE,
@@ -69,7 +69,7 @@ def run(adam_epochs, lbfgs_iters=0, lr=5e-4, seed=0, out="results", log_every=50
 
     fig, ax = plt.subplots(1, 3, figsize=(15, 4.2))
     ax[0].plot(tg, true, "k-", label="true solution"); ax[0].plot(tg, pred, "r--", label="PINN prediction")
-    ax[0].plot(td.numpy(), ud.numpy(), "bo", ms=3, label="observations"); ax[0].set_xlabel("t"); ax[0].set_ylabel("u"); ax[0].legend(); ax[0].grid(alpha=.3)
+    ax[0].plot(td.cpu().numpy(), ud.cpu().numpy(), "bo", ms=3, label="observations"); ax[0].set_xlabel("t"); ax[0].set_ylabel("u"); ax[0].legend(); ax[0].grid(alpha=.3)
     it = [h["iter"] for h in hist]
     ax[1].plot(it, [h["k"] for h in hist], "r", label="identified k"); ax[1].axhline(K_TRUE, color="r", ls=":", label="true k")
     ax[1].plot(it, [h["c"] for h in hist], "b", label="identified c"); ax[1].axhline(C_TRUE, color="b", ls=":", label="true c")
